@@ -1,17 +1,21 @@
 import * as React from "react"
-import { styled } from "@mui/material/styles"
 import Box from "@mui/material/Box"
-import Paper from "@mui/material/Paper"
+import Cell from '../Cell/Cell'
 
-const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-}))
+import { useSelector, useDispatch } from "react-redux"
+// import { getTodosAsync } from '../redux/todoSlice'
+import { addTic } from '../../ticTacToeRedux/slice/ticTacToeSlice'
 
 export default function CSSGrid() {
+
+    const cells = useSelector((state) => state.cells)
+    const dispatch = useDispatch()
+    
+    const handleCellClick = (index) => {
+        dispatch(addTic({ index, value: 'x' }))
+        console.log(`clicked  ${index}`)
+    }
+
     return (
         <Box
             sx={{
@@ -27,8 +31,8 @@ export default function CSSGrid() {
                 gap={1}
                 gridTemplateRows="repeat(3, 100px)"
             >
-                {Array.from(Array(9)).map((_, index) => (
-                    <Item>{index}</Item>
+                {cells.map((cell) => (
+                    <Cell onClick={() => handleCellClick(cell.index)}>{cell.value}</Cell>
                 ))}
             </Box>
         </Box>
