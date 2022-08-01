@@ -4,15 +4,19 @@ import Cell from '../Cell/Cell'
 
 import { useSelector, useDispatch } from "react-redux"
 // import { getTodosAsync } from '../redux/todoSlice'
-import { addTic } from '../../ticTacToeRedux/slice/ticTacToeSlice'
+import { addTic } from '../../ticTacToeRedux/slices/cells/cells'
+
+import { switchSymbols } from '../../ticTacToeRedux/slices/switchSymbols/switchSymbols'
 
 export default function CSSGrid() {
 
     const cells = useSelector((state) => state.cells)
+    const currentSymbol = useSelector((state) => state.switchSymbols)
     const dispatch = useDispatch()
     
     const handleCellClick = (index) => {
-        dispatch(addTic({ index, value: 'x' }))
+        dispatch(addTic({ index, value: currentSymbol }))
+        dispatch(switchSymbols({}))
         console.log(`clicked  ${index}`)
     }
 

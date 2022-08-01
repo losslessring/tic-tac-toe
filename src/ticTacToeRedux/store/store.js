@@ -1,9 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit"
-import ticTacToeReducer from '../slice/ticTacToeSlice'
 
+import reducer from "./reducer"
 
-export default configureStore({
-    reducer: {
-        cells: ticTacToeReducer,
-    },
-})
+export default configureStore({ reducer })
+
