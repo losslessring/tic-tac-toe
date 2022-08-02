@@ -2,10 +2,10 @@ import { createSlice } from "@reduxjs/toolkit"
 
 export const switchSymbolsSlice = createSlice({
     name: "switchSymbol",
-    initialState: '×',
+    initialState: '✖',
     reducers: {
         switchSymbols: (currentSymbol, _) => {
-            return currentSymbol === '×' ? '○' : '×'
+            return currentSymbol === '✖' ? '〇' : '✖'
         },
     },
 })
