@@ -7,6 +7,8 @@ import { useSelector, useDispatch } from "react-redux"
 import { addTic } from '../../ticTacToeRedux/slices/cells/cells'
 
 import { switchSymbols } from '../../ticTacToeRedux/slices/switchSymbols/switchSymbols'
+import checkWin from '../../logic/checkWin/checkWin'
+import winPatterns  from '../../logic/checkWin/winPatterns/winPatterns'
 
 export default function CSSGrid() {
 
@@ -16,8 +18,10 @@ export default function CSSGrid() {
     
     const handleCellClick = (index) => {
         dispatch(addTic({ index, value: currentSymbol }))
-        dispatch(switchSymbols({}))
+        dispatch(switchSymbols({}))      
         console.log(`clicked  ${index}`)
+        console.log(checkWin('✖')(cells)(winPatterns))
+        console.log(checkWin('〇')(cells)(winPatterns))
     }
 
     return (

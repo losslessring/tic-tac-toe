@@ -11,3 +11,5 @@ const winPatterns = [
                 [2, 5, 8]
 
 ]
+
+export default winPatterns
